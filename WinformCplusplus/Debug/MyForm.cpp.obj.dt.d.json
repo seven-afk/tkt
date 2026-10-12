@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\etudiant2\\downloads\\winform_openal_poc\\tkt\\winformcplusplus\\myform.cpp",
+        "ProvidedModule": "",
+        "Includes": [
+            "c:\\users\\etudiant2\\downloads\\winform_openal_poc\\tkt\\winformcplusplus\\myform.h",
+            "c:\\users\\etudiant2\\downloads\\winform_openal_poc\\tkt\\winformcplusplus\\player.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

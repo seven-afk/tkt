@@ -1,1 +1,2 @@
 C:\Users\Etudiant2\Downloads\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
+C:\Users\Etudiant2\Downloads\Winform_OpenAL_POC\tkt\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
