@@ -1,0 +1,12 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\etudiant2\\downloads\\winform_openal_poc\\winformcplusplus\\myform.h",
+        "ProvidedModule": "",
+        "Includes": [
+            "c:\\users\\etudiant2\\downloads\\winform_openal_poc\\winformcplusplus\\player.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
