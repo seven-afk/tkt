@@ -1,0 +1,6 @@
+﻿  aldlist.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+Framework.obj : warning LNK4248: unresolved typeref token (0100001C) for 'ALCdevice_struct'; image may not run
+aldlist.obj : warning LNK4248: unresolved typeref token (0100001B) for 'ALCdevice_struct'; image may not run
+Framework.obj : warning LNK4248: unresolved typeref token (0100001B) for 'ALCcontext_struct'; image may not run
+aldlist.obj : warning LNK4248: unresolved typeref token (0100001C) for 'ALCcontext_struct'; image may not run
+  WinformCplusplus.vcxproj -> C:\Users\flo\Documents\Crea\fbernard\Prog4\tools\tkt\Debug\WinformCplusplus.exe
