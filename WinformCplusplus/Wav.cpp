@@ -9,14 +9,11 @@ Wav::Wav() {
 		ALFWShutdown();
 	}
 }
-int PlayWav(const char* fileName) {
+int Wav::PlayWav(const char* fileName) {
 
-	ALuint      uiBuffer;
-	ALuint      uiSource;
-	ALint       iState;
 
 	// Generate an AL Buffer
-	alGenBuffers(1, &uiBuffer);
+	alGenBuffers(1, &(uiBuffer));
 
 	// Load Wave file into OpenAL Buffer
 	if (!ALFWLoadWaveToBuffer((char*)fileName, uiBuffer))
@@ -33,5 +30,19 @@ int PlayWav(const char* fileName) {
 	alSourcei(uiSource, AL_LOOPING, 1);
 	// Play Source
 	alSourcePlay(uiSource);
+	return 0;
+}
+int Wav::PauseWav() {
+	alSourcePause(uiSource);
+	return 0;
+}
+
+int Wav::ResumeWav() {
+	alSourcePlay(uiSource);
+	return 0;
+}
+
+int Wav::StopWav() {
+	alSourceStop(uiSource);
 	return 0;
 }
