@@ -2,7 +2,7 @@
 #include"Framework.h"
 public class Wav
 {
-public :
+public:
 	Wav();
 	ALuint      uiBuffer;
 	ALuint      uiSource;
@@ -11,5 +11,5 @@ public :
 	int StopWav();
 	int PauseWav();
 	int ResumeWav();
+	int ChangeVolume(float _newVol);
 };
-

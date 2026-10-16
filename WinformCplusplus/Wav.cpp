@@ -1,7 +1,6 @@
 #include "Wav.h"
 
 Wav::Wav() {
-
 	// Initialize Framework
 	ALFWInit();
 	if (!ALFWInitOpenAL())
@@ -10,8 +9,6 @@ Wav::Wav() {
 	}
 }
 int Wav::PlayWav(const char* fileName) {
-
-
 	// Generate an AL Buffer
 	alGenBuffers(1, &(uiBuffer));
 
@@ -39,6 +36,12 @@ int Wav::PauseWav() {
 
 int Wav::ResumeWav() {
 	alSourcePlay(uiSource);
+	return 0;
+}
+
+int Wav::ChangeVolume(float _newVol)
+{
+	alListenerf(AL_GAIN, _newVol);
 	return 0;
 }
 
