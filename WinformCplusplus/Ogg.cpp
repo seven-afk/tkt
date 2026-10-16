@@ -167,61 +167,52 @@ bool Ogg::PlayOgg(const char* _filename)
 
 			stream.iTotalBuffersProcessed = 0;
 
-			Sleep(SERVICE_UPDATE_PERIOD);
-
-			// Request the number of OpenAL Buffers have been processed (played) on the Source
-			stream.iBuffersProcessed = 0;
-			alGetSourcei(stream.uiSource, AL_BUFFERS_PROCESSED, &stream.iBuffersProcessed);
-
-			// Keep a running count of number of buffers processed (for logging purposes only)
-			stream.iTotalBuffersProcessed += stream.iBuffersProcessed;
-
-			// For each processed buffer, remove it from the Source Queue, read next chunk of audio
-			// data from disk, fill buffer with new data, and add it to the Source Queue
-			while (stream.iBuffersProcessed)
+			while (!ALFWKeyPress())
 			{
-				// Remove the Buffer from the Queue.  (uiBuffer contains the Buffer ID for the unqueued Buffer)
-				stream.uiBuffer = 0;
-				alSourceUnqueueBuffers(stream.uiSource, 1, &stream.uiBuffer);
 
-				// Read more audio data (if there is any)
-				stream.ulBytesWritten = DecodeOggVorbis(&stream.sOggVorbisFile, stream.pDecodeBuffer, stream.ulBufferSize, stream.ulChannels);
-				if (stream.ulBytesWritten)
+				Sleep(SERVICE_UPDATE_PERIOD);
+
+				// Request the number of OpenAL Buffers have been processed (played) on the Source
+				stream.iBuffersProcessed = 0;
+				alGetSourcei(stream.uiSource, AL_BUFFERS_PROCESSED, &stream.iBuffersProcessed);
+
+				// Keep a running count of number of buffers processed (for logging purposes only)
+				stream.iTotalBuffersProcessed += stream.iBuffersProcessed;
+
+				// For each processed buffer, remove it from the Source Queue, read next chunk of audio
+				// data from disk, fill buffer with new data, and add it to the Source Queue
+				while (stream.iBuffersProcessed)
 				{
-					alBufferData(stream.uiBuffer, stream.ulFormat, stream.pDecodeBuffer, stream.ulBytesWritten, stream.ulFrequency);
-					alSourceQueueBuffers(stream.uiSource, 1, &stream.uiBuffer);
+					// Remove the Buffer from the Queue.  (uiBuffer contains the Buffer ID for the unqueued Buffer)
+					stream.uiBuffer = 0;
+					alSourceUnqueueBuffers(stream.uiSource, 1, &stream.uiBuffer);
+
+					// Read more audio data (if there is any)
+					stream.ulBytesWritten = DecodeOggVorbis(&stream.sOggVorbisFile, stream.pDecodeBuffer, stream.ulBufferSize, stream.ulChannels);
+					if (stream.ulBytesWritten)
+					{
+						alBufferData(stream.uiBuffer, stream.ulFormat, stream.pDecodeBuffer, stream.ulBytesWritten, stream.ulFrequency);
+						alSourceQueueBuffers(stream.uiSource, 1, &stream.uiBuffer);
+					}
+
+					stream.iBuffersProcessed--;
 				}
 
-				stream.iBuffersProcessed--;
-			}
-
-			// Check the status of the Source.  If it is not playing, then playback was completed,
-			// or the Source was starved of audio data, and needs to be restarted.
-			alGetSourcei(stream.uiSource, AL_SOURCE_STATE, &stream.iState);
-			if (stream.iState != AL_PLAYING)
-			{
-				// If there are Buffers in the Source Queue then the Source was starved of audio
-				// data, so needs to be restarted (because there is more audio data to play)
-				alGetSourcei(stream.uiSource, AL_BUFFERS_QUEUED, &stream.iQueuedBuffers);
-				if (stream.iQueuedBuffers)
+				// Check the status of the Source.  If it is not playing, then playback was completed,
+				// or the Source was starved of audio data, and needs to be restarted.
+				alGetSourcei(stream.uiSource, AL_SOURCE_STATE, &stream.iState);
+				if (stream.iState != AL_PLAYING)
 				{
-					alSourcePlay(stream.uiSource);
+					// If there are Buffers in the Source Queue then the Source was starved of audio
+					// data, so needs to be restarted (because there is more audio data to play)
+					alGetSourcei(stream.uiSource, AL_BUFFERS_QUEUED, &stream.iQueuedBuffers);
+					if (stream.iQueuedBuffers)
+					{
+						alSourcePlay(stream.uiSource);
+					}
 				}
+
 			}
-
-			// Stop the Source and clear the Queue
-			alSourceStop(stream.uiSource);
-			alSourcei(stream.uiSource, AL_BUFFER, 0);
-
-			if (stream.pDecodeBuffer)
-			{
-				free(stream.pDecodeBuffer);
-				stream.pDecodeBuffer = NULL;
-			}
-
-			// Clean up buffers and sources
-			alDeleteSources(1, &stream.uiSource);
-			alDeleteBuffers(NUMBUFFERS, stream.uiBuffers);
 		}
 
 
@@ -240,6 +231,19 @@ bool Ogg::Pause()
 bool Ogg::Stop()
 {
 
+	// Stop the Source and clear the Queue
+	alSourceStop(stream.uiSource);
+	alSourcei(stream.uiSource, AL_BUFFER, 0);
+
+	if (stream.pDecodeBuffer)
+	{
+		free(stream.pDecodeBuffer);
+		stream.pDecodeBuffer = NULL;
+	}
+
+	// Clean up buffers and sources
+	alDeleteSources(1, &stream.uiSource);
+	alDeleteBuffers(NUMBUFFERS, stream.uiBuffers);
 	// Close OggVorbis stream
 	fn_ov_clear(&stream.sOggVorbisFile);
 	return true;
