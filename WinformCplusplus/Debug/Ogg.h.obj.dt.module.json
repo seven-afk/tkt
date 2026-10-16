@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\Ogg.obj",
+            "outputs": [
+                "Debug\\Ogg.h.obj.dt.module.json",
+                "Debug\\Ogg.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

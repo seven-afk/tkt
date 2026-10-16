@@ -5,5 +5,5 @@
 
 int Ogg::PlayOgg(const char* _filename)
 {
-
+	return 1;
 }

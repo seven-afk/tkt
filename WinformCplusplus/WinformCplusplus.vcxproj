@@ -148,8 +148,6 @@
     <ClInclude Include="framework\Win32\CWaves.h" />
     <ClInclude Include="framework\Win32\Framework.h" />
     <ClInclude Include="framework\Win32\LoadOAL.h" />
-    <ClInclude Include="miniaudio_vorbis.h" />
-    <ClInclude Include="minivorbis.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -158,6 +156,5 @@
     <ClInclude Include="Wav.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

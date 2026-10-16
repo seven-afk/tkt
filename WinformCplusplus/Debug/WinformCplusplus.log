@@ -1,10 +1,7 @@
 ﻿  Ogg.cpp
-D:\SVN\Eleves\tkt\WinformCplusplus\Ogg.h(17,19): error C2079: 'StreamingAudioData::fileff' utilise une class de 'std::basic_ifstream<char,std::char_traits<char>>' non défini
-  (compiler le fichier source 'Ogg.cpp')
-  
-D:\SVN\Eleves\tkt\WinformCplusplus\Ogg.h(25,20): error C3646: 'oggVorbisFile' : spécificateur de substitution inconnu
-  (compiler le fichier source 'Ogg.cpp')
-  
-D:\SVN\Eleves\tkt\WinformCplusplus\Ogg.h(25,5): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-  (compiler le fichier source 'Ogg.cpp')
-  
+  aldlist.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
+Framework.obj : warning LNK4248: jeton typeref non résolu (0100001F) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
+aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
+Framework.obj : warning LNK4248: jeton typeref non résolu (0100001E) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
+aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
+  WinformCplusplus.vcxproj -> D:\SVN\Eleves\tkt\Debug\WinformCplusplus.exe
