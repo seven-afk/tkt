@@ -139,6 +139,7 @@
     <ClCompile Include="framework\Win32\Framework.cpp" />
     <ClCompile Include="framework\Win32\LoadOAL.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Ogg.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Wav.cpp" />
   </ItemGroup>
@@ -147,9 +148,12 @@
     <ClInclude Include="framework\Win32\CWaves.h" />
     <ClInclude Include="framework\Win32\Framework.h" />
     <ClInclude Include="framework\Win32\LoadOAL.h" />
+    <ClInclude Include="miniaudio_vorbis.h" />
+    <ClInclude Include="minivorbis.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Ogg.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Wav.h" />
   </ItemGroup>

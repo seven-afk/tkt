@@ -1,0 +1,12 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\svn\\eleves\\tkt\\winformcplusplus\\ogg.cpp",
+        "ProvidedModule": "",
+        "Includes": [
+            "d:\\svn\\eleves\\tkt\\winformcplusplus\\ogg.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

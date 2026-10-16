@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\svn\\eleves\\tkt\\winformcplusplus\\framework\\win32\\loadoal.h",
+        "ProvidedModule": "",
+        "Includes": [
+            "d:\\svn\\eleves\\tkt\\winformcplusplus\\include\\al.h",
+            "d:\\svn\\eleves\\tkt\\winformcplusplus\\include\\alc.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\Wav.obj",
+            "outputs": [
+                "Debug\\Wav.h.obj.dt.module.json",
+                "Debug\\Wav.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

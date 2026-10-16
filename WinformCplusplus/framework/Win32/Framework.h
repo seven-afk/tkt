@@ -7,6 +7,7 @@
 #include<io.h>
 #include<fcntl.h>
 #include<conio.h>
+#include<iostream>
 #include"al.h"
 #include"alc.h"
 #include"efx.h"

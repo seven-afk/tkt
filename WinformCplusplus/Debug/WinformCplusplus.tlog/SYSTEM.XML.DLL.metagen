@@ -28,7 +28,7 @@ Class ThisAssembly: AutoLayout, AnsiClass, Class, Abstract, Sealed, BeforeFieldI
     System.String DefaultAlias = System.Xml.dll : Assembly, Static, Literal, HasDefault
     System.String Copyright = © Microsoft Corporation.  All rights reserved. : Assembly, Static, Literal, HasDefault
     System.String Version = 4.0.0.0 : Assembly, Static, Literal, HasDefault
-    System.String InformationalVersion = 4.7.3062.0 : Assembly, Static, Literal, HasDefault
+    System.String InformationalVersion = 4.6.1055.0 : Assembly, Static, Literal, HasDefault
     System.String DailyBuildNumberStr = 30319 : Assembly, Static, Literal, HasDefault
     System.String BuildRevisionStr = 0 : Assembly, Static, Literal, HasDefault
     Int32 DailyBuildNumber = 30319 : Assembly, Static, Literal, HasDefault
@@ -1289,13 +1289,9 @@ Class System.LocalAppContextSwitches: AutoLayout, AnsiClass, Class, Abstract, Se
   Properties:
     Boolean DontThrowOnInvalidSurrogatePairs 'get ' : 
     Boolean IgnoreEmptyKeySequences 'get ' : 
-    Boolean IgnoreKindInUtcTimeSerialization 'get ' : 
-    Boolean EnableTimeSpanSerialization 'get ' : 
   Methods:
     get_DontThrowOnInvalidSurrogatePairs(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_IgnoreEmptyKeySequences(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_IgnoreKindInUtcTimeSerialization(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_EnableTimeSpanSerialization(): PrivateScope, Public, Static, HideBySig, SpecialName
 Class System.AppContextDefaultValues: AutoLayout, AnsiClass, Class, Abstract, Sealed, BeforeFieldInit
   Methods:
     PopulateDefaultValues(): PrivateScope, Public, Static, HideBySig
@@ -1350,13 +1346,6 @@ Class System.InvariantComparer: AutoLayout, AnsiClass, Class, Serializable, Befo
     System.InvariantComparer Default : Assembly, Static, InitOnly
   Methods:
     Compare(Object, Object): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-Class System.MarvinHash: AutoLayout, AnsiClass, Class, Abstract, Sealed, BeforeFieldInit
-  Fields:
-    UInt64 DefaultSeed : Public, Static, InitOnly
-  Methods:
-    ComputeHash32(String, UInt64): PrivateScope, Public, Static, HideBySig
-    ComputeHash32(Char[], Int32, Int32, UInt64): PrivateScope, Public, Static, HideBySig
-    GenerateSeed(): PrivateScope, Public, Static, HideBySig
 Class System.LocalAppContext: AutoLayout, AnsiClass, Class, Abstract, Sealed
   Methods:
     IsSwitchEnabled(String): PrivateScope, Public, Static, HideBySig
@@ -10536,7 +10525,6 @@ Class System.Xml.Serialization.XmlSerializationPrimitiveWriter: AutoLayout, Ansi
     Write_unsignedLong(Object): PrivateScope, Assembly, HideBySig
     Write_base64Binary(Object): PrivateScope, Assembly, HideBySig
     Write_guid(Object): PrivateScope, Assembly, HideBySig
-    Write_TimeSpan(Object): PrivateScope, Assembly, HideBySig
     Write_char(Object): PrivateScope, Assembly, HideBySig
     Write_QName(Object): PrivateScope, Assembly, HideBySig
 Class System.Xml.Serialization.XmlSerializationPrimitiveReader: AutoLayout, AnsiClass, Class, BeforeFieldInit
@@ -10559,7 +10547,6 @@ Class System.Xml.Serialization.XmlSerializationPrimitiveReader: AutoLayout, Ansi
     Read_unsignedLong(): PrivateScope, Assembly, HideBySig
     Read_base64Binary(): PrivateScope, Assembly, HideBySig
     Read_guid(): PrivateScope, Assembly, HideBySig
-    Read_TimeSpan(): PrivateScope, Assembly, HideBySig
     Read_char(): PrivateScope, Assembly, HideBySig
     Read_QName(): PrivateScope, Assembly, HideBySig
 Class System.Xml.Serialization.Configuration.ConfigurationStrings: AutoLayout, AnsiClass, Class, Abstract, Sealed, BeforeFieldInit
@@ -15712,7 +15699,6 @@ Class System.Xml.XmlConfiguration.XmlConfigurationString: AutoLayout, AnsiClass,
     System.String ProhibitDefaultResolverName = prohibitDefaultResolver : Assembly, Static, Literal, HasDefault
     System.String LimitXPathComplexityName = limitXPathComplexity : Assembly, Static, Literal, HasDefault
     System.String EnableMemberAccessForXslCompiledTransformName = enableMemberAccessForXslCompiledTransform : Assembly, Static, Literal, HasDefault
-    System.String CollapseWhiteSpaceIntoEmptyStringName = CollapseWhiteSpaceIntoEmptyString : Assembly, Static, Literal, HasDefault
     System.String XmlConfigurationSectionName = system.xml : Assembly, Static, Literal, HasDefault
 Class System.Xml.XmlConfiguration.XmlReaderSection: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Configuration.ConfigurationSection
@@ -15720,16 +15706,11 @@ Class System.Xml.XmlConfiguration.XmlReaderSection: AutoLayout, AnsiClass, Class
   Properties:
     System.String ProhibitDefaultResolverString 'get set' : 
     Boolean ProhibitDefaultUrlResolver 'get ' : 
-    System.String CollapseWhiteSpaceIntoEmptyStringString 'get set' : 
-    Boolean CollapseWhiteSpaceIntoEmptyString 'get ' : 
   Methods:
     get_ProhibitDefaultResolverString(): PrivateScope, Public, HideBySig, SpecialName
     set_ProhibitDefaultResolverString(String): PrivateScope, Public, HideBySig, SpecialName
     get_ProhibitDefaultUrlResolver(): PrivateScope, Assembly, Static, HideBySig, SpecialName
     CreateDefaultResolver(): PrivateScope, Assembly, Static, HideBySig
-    get_CollapseWhiteSpaceIntoEmptyStringString(): PrivateScope, Public, HideBySig, SpecialName
-    set_CollapseWhiteSpaceIntoEmptyStringString(String): PrivateScope, Public, HideBySig, SpecialName
-    get_CollapseWhiteSpaceIntoEmptyString(): PrivateScope, Assembly, Static, HideBySig, SpecialName
 Class System.Xml.XmlConfiguration.XsltConfigSection: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Configuration.ConfigurationSection
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

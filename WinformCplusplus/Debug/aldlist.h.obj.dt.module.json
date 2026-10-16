@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\aldlist.obj",
+            "outputs": [
+                "Debug\\aldlist.h.obj.dt.module.json",
+                "Debug\\aldlist.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
