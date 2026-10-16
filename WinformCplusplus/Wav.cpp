@@ -44,5 +44,6 @@ int Wav::ResumeWav() {
 
 int Wav::StopWav() {
 	alSourceStop(uiSource);
+	alSourceRewind(uiSource);
 	return 0;
 }
