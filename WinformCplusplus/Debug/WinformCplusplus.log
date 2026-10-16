@@ -1,1 +1,7 @@
-﻿  WinformCplusplus.vcxproj -> D:\SVN\Eleves\tkt\Debug\WinformCplusplus.exe
+﻿  Ogg.cpp
+  aldlist.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
+Framework.obj : warning LNK4248: jeton typeref non résolu (0100001F) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
+aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
+Framework.obj : warning LNK4248: jeton typeref non résolu (0100001E) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
+aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
+  WinformCplusplus.vcxproj -> D:\SVN\Eleves\tkt\Debug\WinformCplusplus.exe

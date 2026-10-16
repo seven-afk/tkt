@@ -1,4 +1,2 @@
 C:\Users\flo\Documents\Crea\fbernard\Prog4\tools\tkt\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
 D:\SVN\Eleves\tkt\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
-D:\SVN\Eleves\tkt\WinformCplusplus\Debug\WinformCplusplus.MyForm.resources
-D:\SVN\Eleves\tkt\WinformCplusplus\Debug\WinformCplusplus.vcxproj.GenerateResource.cache

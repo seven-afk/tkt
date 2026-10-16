@@ -1,8 +1,6 @@
 #include "Player.h"
-#include "Ogg.h"
 #define	WATER_STREAM_0		"Ruisseau_Escattes_01.wav"
 #define	WATER_STREAM_1		"Ruisseau_Escattes_02.wav"
-#define	WATER_STREAM_0OGG	"stereo.ogg"
 #pragma once
 
 namespace WinformCplusplus {
@@ -20,8 +18,7 @@ namespace WinformCplusplus {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-
-		Ogg* temp = new Ogg();
+		
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -101,7 +98,6 @@ namespace WinformCplusplus {
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm";
 			this->Text = L"Open AL Ambience Player POC";
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -109,13 +105,8 @@ namespace WinformCplusplus {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-
-		temp->PlayOgg(WATER_STREAM_0OGG);
-		
-	
+		Play(WATER_STREAM_0);
+		Play(WATER_STREAM_1);
 	}
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-
 	};
 }

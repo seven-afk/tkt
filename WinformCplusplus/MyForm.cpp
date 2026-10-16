@@ -9,8 +9,6 @@ void Main(array<String^>^ args) {
 	Application::SetCompatibleTextRenderingDefault(false);
 	WinformCplusplus::MyForm form;
 	Application::Run(%form);
-
-
 }
 
 
