@@ -41,12 +41,6 @@ int Wav::ResumeWav() {
 	return 0;
 }
 
-int Wav::ChangeVolume(float _newVol)
-{
-	alListenerf(AL_GAIN, _newVol);
-	return 0;
-}
-
 int Wav::StopWav() {
 	alSourceStop(uiSource);
 	alSourceRewind(uiSource);

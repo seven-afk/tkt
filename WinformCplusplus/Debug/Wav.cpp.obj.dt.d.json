@@ -1,11 +1,11 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\tkt\\winformcplusplus\\wav.cpp",
+        "Source": "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\wav.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\tkt\\winformcplusplus\\wav.h",
-            "c:\\tkt\\winformcplusplus\\framework\\win32\\framework.h",
+            "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\wav.h",
+            "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\framework\\win32\\framework.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winapifamily.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winpackagefamily.h",
@@ -330,11 +330,11 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\clocale",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\locale.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\ostream",
-            "c:\\tkt\\winformcplusplus\\include\\al.h",
-            "c:\\tkt\\winformcplusplus\\include\\alc.h",
-            "c:\\tkt\\winformcplusplus\\include\\efx.h",
-            "c:\\tkt\\winformcplusplus\\include\\efx-creative.h",
-            "c:\\tkt\\winformcplusplus\\include\\xram.h"
+            "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\include\\al.h",
+            "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\include\\alc.h",
+            "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\include\\efx.h",
+            "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\include\\efx-creative.h",
+            "c:\\users\\flo\\documents\\crea\\fbernard\\prog4\\tools\\tkt\\winformcplusplus\\include\\xram.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

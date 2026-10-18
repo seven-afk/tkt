@@ -1,4 +1,5 @@
 #include "Wav.h"
+#include "Ogg.h"
 #include <vector>
 #include <iostream>
 #define	WATER_STREAM_0		"Ruisseau_Escattes_01.wav"
@@ -29,6 +30,8 @@ namespace WinformCplusplus {
 			//TODO: ajoutez ici le code du constructeur
 			//
 			wavPlayer = new Wav();
+			oggPlayer = new Ogg();
+			listView1->OwnerDraw = true;
 		}
 
 	protected:
@@ -45,11 +48,12 @@ namespace WinformCplusplus {
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	protected:
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
 	private: System::Windows::Forms::Button^ previousButton;
 
 	private: Wav* wavPlayer = nullptr;
+	private: Ogg* oggPlayer = nullptr;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ openToolStripMenuItem;
@@ -65,6 +69,7 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::TrackBar^ trackBar1;
 	private: System::Windows::Forms::ToolStripMenuItem^ importToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ exportToolStripMenuItem;
+	private: System::Windows::Forms::ListView^ listView1;
 
 	private:
 		/// <summary>
@@ -80,19 +85,19 @@ namespace WinformCplusplus {
 		void InitializeComponent(void)
 		{
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->previousButton = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->openToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->importToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->exportToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pauseButton = (gcnew System::Windows::Forms::Button());
 			this->stropButton = (gcnew System::Windows::Forms::Button());
 			this->playButton = (gcnew System::Windows::Forms::Button());
 			this->nextButton = (gcnew System::Windows::Forms::Button());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
-			this->importToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->exportToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->SuspendLayout();
@@ -101,17 +106,9 @@ namespace WinformCplusplus {
 			//
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			//
-			// label1
-			//
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(111, 74);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 13);
-			this->label1->TabIndex = 0;
-			//
 			// previousButton
 			//
-			this->previousButton->Location = System::Drawing::Point(76, 113);
+			this->previousButton->Location = System::Drawing::Point(97, 282);
 			this->previousButton->Name = L"previousButton";
 			this->previousButton->Size = System::Drawing::Size(75, 23);
 			this->previousButton->TabIndex = 1;
@@ -124,7 +121,7 @@ namespace WinformCplusplus {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->fileToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(560, 24);
+			this->menuStrip1->Size = System::Drawing::Size(575, 24);
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			//
@@ -141,13 +138,27 @@ namespace WinformCplusplus {
 			// openToolStripMenuItem
 			//
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(110, 22);
 			this->openToolStripMenuItem->Text = L"Open";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			//
+			// importToolStripMenuItem
+			//
+			this->importToolStripMenuItem->Name = L"importToolStripMenuItem";
+			this->importToolStripMenuItem->Size = System::Drawing::Size(110, 22);
+			this->importToolStripMenuItem->Text = L"Import";
+			this->importToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::importList);
+			//
+			// exportToolStripMenuItem
+			//
+			this->exportToolStripMenuItem->Name = L"exportToolStripMenuItem";
+			this->exportToolStripMenuItem->Size = System::Drawing::Size(110, 22);
+			this->exportToolStripMenuItem->Text = L"Export";
+			this->exportToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exportList);
+			//
 			// pauseButton
 			//
-			this->pauseButton->Location = System::Drawing::Point(157, 113);
+			this->pauseButton->Location = System::Drawing::Point(178, 282);
 			this->pauseButton->Name = L"pauseButton";
 			this->pauseButton->Size = System::Drawing::Size(75, 23);
 			this->pauseButton->TabIndex = 3;
@@ -157,7 +168,7 @@ namespace WinformCplusplus {
 			//
 			// stropButton
 			//
-			this->stropButton->Location = System::Drawing::Point(319, 113);
+			this->stropButton->Location = System::Drawing::Point(340, 282);
 			this->stropButton->Name = L"stropButton";
 			this->stropButton->Size = System::Drawing::Size(75, 23);
 			this->stropButton->TabIndex = 5;
@@ -167,7 +178,7 @@ namespace WinformCplusplus {
 			//
 			// playButton
 			//
-			this->playButton->Location = System::Drawing::Point(238, 113);
+			this->playButton->Location = System::Drawing::Point(259, 282);
 			this->playButton->Name = L"playButton";
 			this->playButton->Size = System::Drawing::Size(75, 23);
 			this->playButton->TabIndex = 4;
@@ -177,7 +188,7 @@ namespace WinformCplusplus {
 			//
 			// nextButton
 			//
-			this->nextButton->Location = System::Drawing::Point(400, 113);
+			this->nextButton->Location = System::Drawing::Point(421, 282);
 			this->nextButton->Name = L"nextButton";
 			this->nextButton->Size = System::Drawing::Size(75, 23);
 			this->nextButton->TabIndex = 6;
@@ -187,7 +198,7 @@ namespace WinformCplusplus {
 			//
 			// trackBar1
 			//
-			this->trackBar1->Location = System::Drawing::Point(12, 42);
+			this->trackBar1->Location = System::Drawing::Point(30, 180);
 			this->trackBar1->Maximum = 100;
 			this->trackBar1->Name = L"trackBar1";
 			this->trackBar1->Orientation = System::Windows::Forms::Orientation::Vertical;
@@ -197,32 +208,31 @@ namespace WinformCplusplus {
 			this->trackBar1->Value = 100;
 			this->trackBar1->ValueChanged += gcnew System::EventHandler(this, &MyForm::trackBar1_ValueChanged);
 			//
-			// importToolStripMenuItem
+			// listView1
 			//
-			this->importToolStripMenuItem->Name = L"importToolStripMenuItem";
-			this->importToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->importToolStripMenuItem->Text = L"Import";
-			this->importToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::importList);
-			//
-			// exportToolStripMenuItem
-			//
-			this->exportToolStripMenuItem->Name = L"exportToolStripMenuItem";
-			this->exportToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->exportToolStripMenuItem->Text = L"Export";
-			this->exportToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exportList);
+			this->listView1->Activation = System::Windows::Forms::ItemActivation::OneClick;
+			this->listView1->HideSelection = false;
+			this->listView1->Location = System::Drawing::Point(97, 53);
+			this->listView1->Name = L"listView1";
+			this->listView1->Size = System::Drawing::Size(399, 223);
+			this->listView1->TabIndex = 8;
+			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->listView1->View = System::Windows::Forms::View::List;
+			this->listView1->DrawItem += gcnew System::Windows::Forms::DrawListViewItemEventHandler(this, &MyForm::listView1_DrawItem);
+			this->listView1->ItemActivate += gcnew System::EventHandler(this, &MyForm::listView1_ItemActivate);
 			//
 			// MyForm
 			//
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(560, 179);
+			this->ClientSize = System::Drawing::Size(575, 318);
+			this->Controls->Add(this->listView1);
 			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->nextButton);
 			this->Controls->Add(this->stropButton);
 			this->Controls->Add(this->playButton);
 			this->Controls->Add(this->pauseButton);
 			this->Controls->Add(this->previousButton);
-			this->Controls->Add(this->label1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
@@ -235,13 +245,49 @@ namespace WinformCplusplus {
 		}
 #pragma endregion
 
+	private: System::Void listView1_DrawItem(System::Object^ sender, DrawListViewItemEventArgs^ e)
+	{
+		// Fond avec TA couleur (celle que tu mets déjà en code sur l'item)
+		e->Graphics->FillRectangle(gcnew SolidBrush(e->Item->BackColor), e->Bounds);
+
+		// Texte
+		TextRenderer::DrawText(e->Graphics, e->Item->Text, e->Item->Font,
+			e->Bounds, e->Item->ForeColor, TextFormatFlags::Left);
+	}
+
+	private: System::Void listView1_DrawColumnHeader(System::Object^ sender, DrawListViewColumnHeaderEventArgs^ e)
+	{
+		e->DrawDefault = true; // header normal
+	}
+
+	private: String^ GetSoundName(String^ _path)
+	{
+		return _path->Substring(_path->LastIndexOf("\\") + 1);
+	}
+
+	private: String^ GetFileType(String^ _path)
+	{
+		return filePaths[playingIndex]->Substring(filePaths[playingIndex]->LastIndexOf("."));
+	}
+
 	private: void PlaySound()
 	{
 		IntPtr ptrToNativeString = Marshal::StringToHGlobalAnsi(filePaths[playingIndex]);
-		wavPlayer->PlayWav(static_cast<char*>(ptrToNativeString.ToPointer()));
-		isPaused = false;
+		const char* file = static_cast<char*>(ptrToNativeString.ToPointer());
 
-		label1->Text = filePaths[playingIndex]->Substring(filePaths[playingIndex]->LastIndexOf("\\") + 1);
+		String^ type = GetFileType(filePaths[playingIndex]);
+		oggPlayer->Stop();
+		wavPlayer->StopWav();
+
+		if (type == ".wav")
+			wavPlayer->PlayWav(file);
+		else if (type == ".ogg")
+		{
+			oggPlayer->InitFile(file);
+			oggPlayer->PlayOgg();
+		}
+		isPaused = false;
+		listView1->Items[playingIndex]->BackColor = Color::LightBlue;
 	}
 
 	private: System::Void playButton_Click(System::Object^ sender, System::EventArgs^ e)
@@ -250,64 +296,83 @@ namespace WinformCplusplus {
 	}
 	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		openFileDialog1->AddExtension = "Audio files (*.wav;*.ogg)|*.wav;*.ogg";
-		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			filePaths.Add(openFileDialog1->FileName);
+		openFileDialog1->Filter = "Audio files (*.wav;*.ogg)|*.wav;*.ogg";
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			String^ path = openFileDialog1->FileName;
+			filePaths.Add(path);
+			listView1->Items->Add(GetSoundName(path));
 			soundNbr++;
 		}
 	}
 	private: System::Void previousButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		String^ type = GetFileType(filePaths[playingIndex]);
+
 		if (playingIndex > 0)
 		{
+			listView1->Items[playingIndex]->BackColor = Color::White;
 			playingIndex--;
-			wavPlayer->StopWav();
+
+			if (type == ".wav")
+				wavPlayer->StopWav();
+			else if (type == ".ogg")
+				oggPlayer->Stop();
+
 			PlaySound();
 		}
 	}
 	private: System::Void pauseButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		String^ fileType = filePaths[playingIndex]->Substring(filePaths[playingIndex]->LastIndexOf("."));
+		String^ type = GetFileType(filePaths[playingIndex]);
 
-		if (fileType == ".wav")
+		if (type == ".wav")
 		{
 			if (isPaused)
-			{
 				wavPlayer->ResumeWav();
-			}
 			else
-			{
 				wavPlayer->PauseWav();
-			}
+		}
+		else if (type == ".ogg")
+		{
+			if (isPaused)
+				oggPlayer->Resume();
+			else
+				oggPlayer->Pause();
 		}
 		isPaused = !isPaused;
 	}
 	private: System::Void stropButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		String^ fileType = filePaths[playingIndex]->Substring(filePaths[playingIndex]->LastIndexOf("."));
+		String^ type = GetFileType(filePaths[playingIndex]);
 
-		if (fileType == ".wav")
-		{
+		if (type == ".wav")
 			wavPlayer->StopWav();
-		}
+		else if (type == ".ogg")
+			oggPlayer->Stop();
+
+		listView1->Items[playingIndex]->BackColor = Color::White;
 	}
 	private: System::Void nextButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		String^ type = GetFileType(filePaths[playingIndex]);
+
 		if (playingIndex < soundNbr - 1)
 		{
+			listView1->Items[playingIndex]->BackColor = Color::White;
 			playingIndex++;
-			wavPlayer->StopWav();
+
+			if (type == ".wav")
+				wavPlayer->StopWav();
+			else if (type == ".ogg")
+				oggPlayer->Stop();
+
 			PlaySound();
 		}
 	}
 	private: System::Void trackBar1_ValueChanged(System::Object^ sender, System::EventArgs^ e)
 	{
-		String^ fileType = filePaths[playingIndex]->Substring(filePaths[playingIndex]->LastIndexOf("."));
-
-		if (fileType == ".wav")
-		{
-			wavPlayer->ChangeVolume(float(trackBar1->Value / 100.f));
-		}
+		alListenerf(AL_GAIN, (trackBar1->Value / 100.f));
 	}
 
 	private: System::Void exportList(System::Object^ sender, System::EventArgs^ e) {
@@ -320,16 +385,27 @@ namespace WinformCplusplus {
 			writer->Close();
 		}
 	}
+
 	private: System::Void importList(System::Object^ sender, System::EventArgs^ e) {
 		openFileDialog1->AddExtension = "list txt|*.txt";
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			System::IO::StreamReader^ reader = gcnew System::IO::StreamReader(openFileDialog1->FileName);
 			while (!reader->EndOfStream) {
-				filePaths.Add(reader->ReadLine());
+				String^ path = reader->ReadLine();
+				filePaths.Add(path);
 				soundNbr++;
+
+				listView1->Items->Add(GetSoundName(path));
 			}
 			reader->Close();
 		}
+	}
+	private: System::Void listView1_ItemActivate(System::Object^ sender, System::EventArgs^ e)
+	{
+		listView1->Items[playingIndex]->BackColor = Color::White;
+		int index = listView1->SelectedIndices[0];
+		playingIndex = index;
+		PlaySound();
 	}
 	};
 }
