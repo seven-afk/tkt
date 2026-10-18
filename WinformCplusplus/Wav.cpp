@@ -9,6 +9,8 @@ Wav::Wav() {
 	}
 }
 int Wav::PlayWav(const char* fileName) {
+	alSourceStop(uiSource);
+	alSourceRewind(uiSource);
 	// Generate an AL Buffer
 	alGenBuffers(1, &(uiBuffer));
 
