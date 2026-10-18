@@ -1,0 +1,29 @@
+﻿  aldlist.cpp
+  CWaves.cpp
+C:\tkt\WinformCplusplus\framework\Win32\LoadOAL.h(1,10): error C1083: Impossible d'ouvrir le fichier include : 'al.h' : No such file or directory
+  (compiler le fichier source 'framework/Win32/aldlist.cpp')
+  
+  Framework.cpp
+C:\tkt\WinformCplusplus\framework\Win32\Framework.h(11,9): error C1083: Impossible d'ouvrir le fichier include : 'al.h' : No such file or directory
+  (compiler le fichier source 'framework/Win32/Framework.cpp')
+  
+  LoadOAL.cpp
+C:\tkt\WinformCplusplus\framework\Win32\LoadOAL.h(1,10): error C1083: Impossible d'ouvrir le fichier include : 'al.h' : No such file or directory
+  (compiler le fichier source 'framework/Win32/LoadOAL.cpp')
+  
+  MyForm.cpp
+C:\tkt\WinformCplusplus\Wav.h(2,9): error C1083: Impossible d'ouvrir le fichier include : 'Framework.h' : No such file or directory
+  (compiler le fichier source 'MyForm.cpp')
+  
+  Ogg.cpp
+C:\tkt\WinformCplusplus\Ogg.h(2,9): error C1083: Impossible d'ouvrir le fichier include : 'Framework.h' : No such file or directory
+  (compiler le fichier source 'Ogg.cpp')
+  
+  Player.cpp
+C:\tkt\WinformCplusplus\Player.cpp(2,9): error C1083: Impossible d'ouvrir le fichier include : 'Framework.h' : No such file or directory
+  Wav.cpp
+C:\tkt\WinformCplusplus\Wav.h(2,9): error C1083: Impossible d'ouvrir le fichier include : 'Framework.h' : No such file or directory
+  (compiler le fichier source 'Wav.cpp')
+  
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Génération de code en cours...

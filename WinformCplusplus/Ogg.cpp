@@ -44,33 +44,19 @@ bool g_bVorbisInit = false;
 
 Ogg::Ogg()
 {
-	// Initialize Framework
-	ALFWInit();
-
-	ALFWprintf("PlayOggVorbis Test Application\n");
-
-	// Initialize OggVorbis libary
+	// OpenAL (device + context) is initialised once by Wav, which MyForm creates first
 	InitVorbisFile();
 	if (!g_bVorbisInit)
-	{
 		ALFWprintf("Failed to find OggVorbis DLLs (vorbisfile.dll, ogg.dll, or vorbis.dll)\n");
-		ALFWShutdown();
-		return;
-	}
-
-	// Initialise OpenAL
-	if (!ALFWInitOpenAL())
-	{
-		ALFWprintf("Failed to initialize OpenAL\n");
-		ALFWShutdown();
-		return;
-	}
-
 }
 
-bool Ogg::PlayOgg(const char* _filename)
+bool Ogg::InitFile(const char* _filename)
 {
-	
+	if (!g_bVorbisInit)
+		return false;
+
+	Stop(); // never leave a previous track playing
+
 	stream.sCallbacks.read_func = ov_read_func;
 	stream.sCallbacks.seek_func = ov_seek_func;
 	stream.sCallbacks.close_func = ov_close_func;
@@ -81,12 +67,7 @@ bool Ogg::PlayOgg(const char* _filename)
 	stream.pOggVorbisFile = fopen(_filename, "rb");
 
 	if (!stream.pOggVorbisFile)
-	{
-		ShutdownVorbisFile();
-		ALFWShutdownOpenAL();
-		ALFWShutdown();
-		return 0;
-	}
+		return false;
 
 
 	// Create an OggVorbis file stream
@@ -139,9 +120,6 @@ bool Ogg::PlayOgg(const char* _filename)
 			if (!stream.pDecodeBuffer)
 			{
 				fn_ov_clear(&stream.sOggVorbisFile);
-				ShutdownVorbisFile();
-				ALFWShutdownOpenAL();
-				ALFWShutdown();
 				return false;
 			}
 
@@ -161,13 +139,40 @@ bool Ogg::PlayOgg(const char* _filename)
 					alSourceQueueBuffers(stream.uiSource, 1, &stream.uiBuffers[stream.iLoop]);
 				}
 			}
+			bOpen = true;
+			return true;
+		}
+		fn_ov_clear(&stream.sOggVorbisFile);
+		return false;
+	}
+	fclose(stream.pOggVorbisFile);
+	return false;
+}
 
+DWORD WINAPI Ogg::StreamThread(LPVOID param)
+{
+	static_cast<Ogg*>(param)->StreamLoop();
+	return 0;
+}
+
+bool Ogg::PlayOgg()
+{
+	if (!bOpen || hThread)
+		return false;
+
+	bStopRequested = false;
+	hThread = CreateThread(NULL, 0, StreamThread, this, 0, NULL); 
+	return hThread != NULL;
+}
+
+void Ogg::StreamLoop()
+{
 			// Start playing source
 			alSourcePlay(stream.uiSource);
 
 			stream.iTotalBuffersProcessed = 0;
 
-			while (!ALFWKeyPress())
+			while (!bStopRequested)
 			{
 
 				Sleep(SERVICE_UPDATE_PERIOD);
@@ -201,7 +206,7 @@ bool Ogg::PlayOgg(const char* _filename)
 				// Check the status of the Source.  If it is not playing, then playback was completed,
 				// or the Source was starved of audio data, and needs to be restarted.
 				alGetSourcei(stream.uiSource, AL_SOURCE_STATE, &stream.iState);
-				if (stream.iState != AL_PLAYING)
+				if (stream.iState != AL_PLAYING && stream.iState != AL_PAUSED)
 				{
 					// If there are Buffers in the Source Queue then the Source was starved of audio
 					// data, so needs to be restarted (because there is more audio data to play)
@@ -213,23 +218,26 @@ bool Ogg::PlayOgg(const char* _filename)
 				}
 
 			}
-		}
-
-
-		return true;
-	}
-
-	return false;
 }
 
 bool Ogg::Pause()
 {
-
+	alSourcePause(stream.uiSource);
 	return true;
 }
 
 bool Ogg::Stop()
 {
+	if (hThread)
+	{
+		bStopRequested = true;
+		WaitForSingleObject(hThread, INFINITE);
+		CloseHandle(hThread);
+		hThread = NULL;
+	}
+	if (!bOpen)
+		return true;
+	bOpen = false;
 
 	// Stop the Source and clear the Queue
 	alSourceStop(stream.uiSource);
@@ -250,8 +258,7 @@ bool Ogg::Stop()
 }
 bool Ogg::Resume()
 {
-
-
+	alSourcePlay(stream.uiSource);
 	return true;
 }
 

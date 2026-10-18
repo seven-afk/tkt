@@ -1,7 +1,12 @@
-﻿  Ogg.cpp
+﻿C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.MetaGen.targets(91,5): warning : Le fichier requis "C:\PROGRAM FILES (X86)\REFERENCE ASSEMBLIES\MICROSOFT\FRAMEWORK\.NETFRAMEWORK\V4.6.1\SYSTEM.DATA.DLL" est manquant.
+C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.MetaGen.targets(91,5): warning : Le fichier requis "C:\PROGRAM FILES (X86)\REFERENCE ASSEMBLIES\MICROSOFT\FRAMEWORK\.NETFRAMEWORK\V4.6.1\SYSTEM.DLL" est manquant.
+C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.MetaGen.targets(91,5): warning : Le fichier requis "C:\PROGRAM FILES (X86)\REFERENCE ASSEMBLIES\MICROSOFT\FRAMEWORK\.NETFRAMEWORK\V4.6.1\SYSTEM.DRAWING.DLL" est manquant.
+C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.MetaGen.targets(91,5): warning : Le fichier requis "C:\PROGRAM FILES (X86)\REFERENCE ASSEMBLIES\MICROSOFT\FRAMEWORK\.NETFRAMEWORK\V4.6.1\SYSTEM.XML.DLL" est manquant.
+C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.MetaGen.targets(91,5): warning : Le fichier requis "C:\PROGRAM FILES (X86)\REFERENCE ASSEMBLIES\MICROSOFT\FRAMEWORK\.NETFRAMEWORK\V4.6.1\SYSTEM.WINDOWS.FORMS.DLL" est manquant.
+  MyForm.cpp
   aldlist.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
 Framework.obj : warning LNK4248: jeton typeref non résolu (0100001F) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
 aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
 Framework.obj : warning LNK4248: jeton typeref non résolu (0100001E) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
 aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
-  WinformCplusplus.vcxproj -> D:\SVN\Eleves\tkt\Debug\WinformCplusplus.exe
+  WinformCplusplus.vcxproj -> C:\tkt\Debug\WinformCplusplus.exe

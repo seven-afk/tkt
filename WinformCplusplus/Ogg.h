@@ -25,12 +25,18 @@ struct OggStream
 
 public class Ogg
 {
-	OggStream stream;
+	OggStream stream{};
+	HANDLE hThread = NULL;
+	volatile bool bStopRequested = false;
+	bool bOpen = false;
 
+	static DWORD WINAPI StreamThread(LPVOID param);
+	void StreamLoop();
 
-public : 
+public :
 	Ogg();
-	bool PlayOgg(const char* fileName);//JE SUIS AMOUREUX DE CLEMENT
+	bool InitFile(const char* fileName);
+	bool PlayOgg();//JE SUIS AMOUREUX DE CLEMENT
 	bool Stop();
 	bool Pause();
 	bool Resume();

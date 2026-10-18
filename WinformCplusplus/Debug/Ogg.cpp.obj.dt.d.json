@@ -1,11 +1,11 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\svn\\eleves\\tkt\\winformcplusplus\\ogg.cpp",
+        "Source": "c:\\tkt\\winformcplusplus\\ogg.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "d:\\svn\\eleves\\tkt\\winformcplusplus\\ogg.h",
-            "d:\\svn\\eleves\\tkt\\winformcplusplus\\framework\\win32\\framework.h",
+            "c:\\tkt\\winformcplusplus\\ogg.h",
+            "c:\\tkt\\winformcplusplus\\framework\\win32\\framework.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winapifamily.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winpackagefamily.h",
@@ -330,11 +330,15 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\clocale",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\locale.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\ostream",
-            "d:\\svn\\eleves\\tkt\\winformcplusplus\\include\\al.h",
-            "d:\\svn\\eleves\\tkt\\winformcplusplus\\include\\alc.h",
-            "d:\\svn\\eleves\\tkt\\winformcplusplus\\include\\efx.h",
-            "d:\\svn\\eleves\\tkt\\winformcplusplus\\include\\efx-creative.h",
-            "d:\\svn\\eleves\\tkt\\winformcplusplus\\include\\xram.h"
+            "c:\\tkt\\winformcplusplus\\include\\al.h",
+            "c:\\tkt\\winformcplusplus\\include\\alc.h",
+            "c:\\tkt\\winformcplusplus\\include\\efx.h",
+            "c:\\tkt\\winformcplusplus\\include\\efx-creative.h",
+            "c:\\tkt\\winformcplusplus\\include\\xram.h",
+            "c:\\tkt\\winformcplusplus\\include\\vorbis\\vorbisfile.h",
+            "c:\\tkt\\winformcplusplus\\include\\vorbis\\codec.h",
+            "c:\\tkt\\winformcplusplus\\include\\ogg\\ogg.h",
+            "c:\\tkt\\winformcplusplus\\include\\ogg\\os_types.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
