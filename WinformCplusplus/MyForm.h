@@ -2,6 +2,7 @@
 #include "Ogg.h"
 #include <vector>
 #include <iostream>
+#include <array>
 #define	WATER_STREAM_0		"Ruisseau_Escattes_01.wav"
 #define	WATER_STREAM_1		"Ruisseau_Escattes_02.wav"
 #pragma once
@@ -297,11 +298,14 @@ namespace WinformCplusplus {
 	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		openFileDialog1->Filter = "Audio files (*.wav;*.ogg)|*.wav;*.ogg";
+		openFileDialog1->Multiselect = true;
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
-			String^ path = openFileDialog1->FileName;
-			filePaths.Add(path);
-			listView1->Items->Add(GetSoundName(path));
+			auto paths = openFileDialog1->FileNames;
+			for (int i = 0;i < paths->Length;i++) {
+				filePaths.Add(paths[i]);
+				listView1->Items->Add(GetSoundName(paths[i]));
+			}
 			soundNbr++;
 		}
 	}
